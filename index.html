@@ -8,53 +8,88 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --emerald: #1a6b4a;
-      --emerald-light: #22875f;
-      --emerald-pale: #e6f4ee;
-      --gold: #b89a4e;
-      --cream: #faf8f4;
-      --muted: #6b7280;
-      --border: #d8e8e1;
+      --emerald:#1a6b4a;--emerald-light:#22875f;--emerald-pale:#e6f4ee;
+      --gold:#b89a4e;--cream:#faf8f4;--muted:#6b7280;--border:#d8e8e1;
     }
-    body { background-color: var(--cream); font-family: 'Inter', sans-serif; color: #1c1c1c; }
-    h1, h2 { font-family: 'Playfair Display', serif; }
-    .header-pattern {
-      background-color: var(--emerald);
-      background-image: radial-gradient(circle at 25% 50%, rgba(184,154,78,0.15) 0%, transparent 60%),
-                        radial-gradient(circle at 75% 50%, rgba(184,154,78,0.10) 0%, transparent 60%);
+    body{background-color:var(--cream);font-family:'Inter',sans-serif;color:#1c1c1c;}
+    h1,h2{font-family:'Playfair Display',serif;}
+    .header-pattern{
+      background-color:var(--emerald);
+      background-image:radial-gradient(circle at 25% 50%,rgba(184,154,78,.15) 0%,transparent 60%),
+                       radial-gradient(circle at 75% 50%,rgba(184,154,78,.10) 0%,transparent 60%);
     }
-    .card { background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 8px rgba(26,107,74,0.06); }
-    .btn-primary { background-color: var(--emerald); color: white; transition: background-color 0.2s, transform 0.1s; }
-    .btn-primary:hover { background-color: var(--emerald-light); }
-    .btn-primary:active { transform: scale(0.98); }
-    .btn-primary:disabled { background-color: #9ca3af; cursor: not-allowed; }
-    .btn-danger { background-color: #fee2e2; color: #b91c1c; transition: background-color 0.2s; }
-    .btn-danger:hover { background-color: #fecaca; }
-    .input-field { border: 1.5px solid var(--border); border-radius: 8px; transition: border-color 0.2s, box-shadow 0.2s; background: white; }
-    .input-field:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(26,107,74,0.12); }
-    .badge-active { background: var(--emerald-pale); color: var(--emerald); border: 1px solid rgba(26,107,74,0.2); }
-    .badge-done { background: #f3f4f6; color: var(--muted); border: 1px solid #e5e7eb; }
-    .booking-row { transition: background-color 0.15s; }
-    .booking-row:hover { background-color: var(--emerald-pale); }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
-    .pulse-dot { animation: pulse-dot 2s infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .spinner { animation: spin 0.8s linear infinite; display: inline-block; }
-    #toast { transition: opacity 0.3s, transform 0.3s; }
-    #toast.hide { opacity:0; transform:translateY(-12px); pointer-events:none; }
-    #toast.show { opacity:1; transform:translateY(0); }
-    .tab-btn.active-tab { border-bottom: 2.5px solid var(--emerald); color: var(--emerald); font-weight: 600; }
-    select.input-field { cursor: pointer; }
-    @media (max-width:640px) { .hide-mobile { display:none !important; } }
-
-    /* Sync pulse on capacity bar */
-    @keyframes flash { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    .syncing { animation: flash 0.6s ease 2; }
+    .card{background:white;border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px rgba(26,107,74,.06);}
+    .btn-primary{background-color:var(--emerald);color:white;transition:background-color .2s,transform .1s;}
+    .btn-primary:hover:not(:disabled){background-color:var(--emerald-light);}
+    .btn-primary:active:not(:disabled){transform:scale(.98);}
+    .btn-primary:disabled{background-color:#9ca3af;cursor:not-allowed;}
+    .btn-danger{background-color:#fee2e2;color:#b91c1c;transition:background-color .2s;}
+    .btn-danger:hover{background-color:#fecaca;}
+    .input-field{border:1.5px solid var(--border);border-radius:8px;transition:border-color .2s,box-shadow .2s;background:white;}
+    .input-field:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 3px rgba(26,107,74,.12);}
+    .badge-active{background:var(--emerald-pale);color:var(--emerald);border:1px solid rgba(26,107,74,.2);}
+    .badge-done{background:#f3f4f6;color:var(--muted);border:1px solid #e5e7eb;}
+    .booking-row{transition:background-color .15s;}
+    .booking-row:hover{background-color:var(--emerald-pale);}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+    .pulse-dot{animation:pulse-dot 2s infinite;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spinner{animation:spin .9s linear infinite;display:inline-block;}
+    #toast{transition:opacity .3s,transform .3s;}
+    #toast.hide{opacity:0;transform:translateY(-12px);pointer-events:none;}
+    #toast.show{opacity:1;transform:translateY(0);}
+    .tab-btn.active-tab{border-bottom:2.5px solid var(--emerald);color:var(--emerald);font-weight:600;}
+    select.input-field{cursor:pointer;}
+    @media(max-width:640px){.hide-mobile{display:none!important;}}
+    @keyframes flash{0%,100%{opacity:1}50%{opacity:.4}}
+    .syncing{animation:flash .6s ease 2;}
   </style>
 </head>
 <body class="min-h-screen pb-16">
 
-  <!-- Header -->
+<!-- ══ SETUP SCREEN ══════════════════════════════════════════════════════════ -->
+<div id="setupScreen" class="hidden min-h-screen flex items-center justify-center p-4">
+  <div class="card p-8 max-w-md w-full">
+    <div class="text-center mb-6">
+      <div class="text-5xl mb-3">🕌</div>
+      <h1 class="text-xl font-bold" style="color:var(--emerald)">TMG Muslimah Surau</h1>
+      <p class="text-sm text-gray-500 mt-1">One-time setup — takes 5 minutes, completely free</p>
+    </div>
+    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 mb-5 text-sm" style="background:#f0faf5;border-color:#a7d9bf;">
+      <p class="font-semibold mb-2 text-gray-700">📋 How to get your free database:</p>
+      <ol class="space-y-1.5 list-decimal list-inside text-xs text-gray-600 leading-relaxed">
+        <li>Open <a href="https://jsonbin.io" target="_blank" class="underline font-semibold" style="color:var(--emerald)">jsonbin.io</a> → Sign Up free (use email)</li>
+        <li>After login → click <strong>+ Create Bin</strong></li>
+        <li>Paste this exactly as the content:<br>
+          <code class="block bg-white border border-gray-200 rounded px-2 py-1 mt-1 font-mono text-xs select-all">{"bookings":[]}</code>
+        </li>
+        <li>Make sure <strong>Private</strong> is <strong>OFF</strong></li>
+        <li>Click <strong>Create Bin</strong> → copy the <strong>BIN ID</strong> shown</li>
+        <li>Click your profile → <strong>API Keys</strong> → copy <strong>Master Key</strong></li>
+        <li>Paste both below — do this once, then share the same link with everyone</li>
+      </ol>
+    </div>
+    <div class="space-y-3">
+      <div>
+        <label class="block text-sm font-medium mb-1 text-gray-700">Bin ID <span class="text-red-400">*</span></label>
+        <input id="setupBinId" type="text" placeholder="e.g. 6507f3c8dc746540891b..." class="input-field w-full px-3 py-2.5 text-sm font-mono"/>
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1 text-gray-700">Master Key (API Key) <span class="text-red-400">*</span></label>
+        <input id="setupApiKey" type="password" placeholder="$2a$10$..." class="input-field w-full px-3 py-2.5 text-sm font-mono"/>
+        <p class="text-xs text-gray-400 mt-1">⚠️ Saved in <em>this browser only</em>. Every user must enter it once — or embed it in the HTML before hosting.</p>
+      </div>
+      <div id="setupError" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2"></div>
+      <button id="setupBtn" onclick="saveSetup()" class="btn-primary w-full py-3 rounded-xl font-semibold text-sm">
+        Save &amp; Connect →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN APP ═══════════════════════════════════════════════════════════════ -->
+<div id="appScreen" class="hidden">
+
   <header class="header-pattern text-white px-6 py-7 shadow-lg">
     <div class="max-w-3xl mx-auto flex items-center gap-4">
       <div class="text-4xl select-none">🕌</div>
@@ -63,29 +98,29 @@
         <h1 class="text-2xl font-bold leading-tight">Muslimah Surau Booking</h1>
         <div class="text-xs opacity-60 mt-0.5 flex items-center gap-1.5">
           <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-300"></span>
-          Live · <span id="headerDate"></span>
+          Live &middot; <span id="headerDate"></span>
         </div>
       </div>
-      <!-- Sync status -->
-      <div id="syncBadge" class="text-xs bg-white/10 rounded-full px-3 py-1 flex items-center gap-1.5">
-        <span id="syncDot" class="inline-block w-1.5 h-1.5 rounded-full bg-green-300"></span>
-        <span id="syncText">Synced</span>
+      <div class="flex items-center gap-2">
+        <div id="syncBadge" class="text-xs bg-white/10 rounded-full px-3 py-1 flex items-center gap-1.5">
+          <span id="syncDot" class="inline-block w-1.5 h-1.5 rounded-full bg-yellow-300"></span>
+          <span id="syncText">Loading…</span>
+        </div>
+        <button onclick="showSetup()" title="Settings" class="text-white/50 hover:text-white text-lg transition-colors">⚙️</button>
       </div>
     </div>
   </header>
 
-  <!-- Loading overlay -->
-  <div id="loadingOverlay" class="max-w-3xl mx-auto px-4 mt-8 text-center">
+  <div id="loadingBar" class="max-w-3xl mx-auto px-4 mt-8 text-center">
     <div class="card p-10">
       <div class="spinner text-3xl mb-3">🔄</div>
-      <p class="text-gray-500 text-sm">Loading shared bookings...</p>
+      <p class="text-gray-500 text-sm">Loading shared bookings…</p>
     </div>
   </div>
 
-  <!-- Main content (hidden until loaded) -->
   <div id="mainContent" class="hidden">
 
-    <!-- Capacity Banner -->
+    <!-- Capacity -->
     <div class="max-w-3xl mx-auto px-4 mt-5">
       <div class="card p-4 flex items-center gap-5">
         <div class="flex-shrink-0 text-center">
@@ -111,13 +146,13 @@
 
     <!-- Tabs -->
     <div class="max-w-3xl mx-auto px-4 mt-5">
-      <div class="flex gap-0 border-b border-gray-200">
+      <div class="flex border-b border-gray-200">
         <button class="tab-btn active-tab px-5 py-3 text-sm" onclick="switchTab('book')">Book Surau</button>
         <button class="tab-btn px-5 py-3 text-sm text-gray-500" onclick="switchTab('list')">All Bookings</button>
       </div>
     </div>
 
-    <!-- TAB: Book Surau -->
+    <!-- TAB: Book -->
     <div id="tab-book" class="max-w-3xl mx-auto px-4 mt-5">
       <div class="card p-6">
         <h2 class="text-lg font-semibold mb-1" style="color:var(--emerald)">New Booking</h2>
@@ -135,12 +170,9 @@
             <div>
               <label class="block text-sm font-medium mb-1.5 text-gray-700">Purpose</label>
               <select id="inputPurpose" class="input-field w-full px-4 py-2.5 text-sm">
-                <option>Solat Fardhu</option>
-                <option>Solat Sunat</option>
-                <option>Tilawah Al-Quran</option>
-                <option>Tazkirah / Halaqah</option>
-                <option>Rehat / Wudhu</option>
-                <option>Lain-lain</option>
+                <option>Solat Fardhu</option><option>Solat Sunat</option>
+                <option>Tilawah Al-Quran</option><option>Tazkirah / Halaqah</option>
+                <option>Rehat / Wudhu</option><option>Lain-lain</option>
               </select>
             </div>
           </div>
@@ -159,13 +191,12 @@
             <input id="inputNotes" type="text" placeholder="e.g. Bringing 3 friends" class="input-field w-full px-4 py-2.5 text-sm"/>
           </div>
           <div id="formError" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5"></div>
-          <button id="submitBtn" onclick="submitBooking()" class="btn-primary w-full py-3 rounded-xl font-semibold text-sm tracking-wide mt-1">
+          <button id="submitBtn" onclick="submitBooking()" class="btn-primary w-full py-3 rounded-xl font-semibold text-sm tracking-wide">
             Confirm Booking ✓
           </button>
         </div>
       </div>
 
-      <!-- Today's Schedule -->
       <div class="mt-5 card p-5">
         <div class="flex items-center justify-between mb-3">
           <h2 class="font-semibold text-sm text-gray-700">Today's Schedule</h2>
@@ -175,7 +206,7 @@
       </div>
     </div>
 
-    <!-- TAB: All Bookings -->
+    <!-- TAB: All -->
     <div id="tab-list" class="max-w-3xl mx-auto px-4 mt-5 hidden">
       <div class="card p-5">
         <div class="flex items-center gap-3 mb-4 flex-wrap">
@@ -194,296 +225,316 @@
     </div>
 
   </div><!-- /mainContent -->
+</div><!-- /appScreen -->
 
-  <!-- Toast -->
-  <div id="toast" class="hide fixed top-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl shadow-xl text-sm font-medium text-white flex items-center gap-2"
-       style="background:var(--emerald);min-width:220px;max-width:90vw"></div>
+<div id="toast" class="hide fixed top-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl shadow-xl text-sm font-medium text-white"
+     style="background:var(--emerald);min-width:220px;max-width:90vw;text-align:center"></div>
 
-  <script>
-    // ─────────────────────────────────────────────────────────────
-    // SHARED STORAGE — uses window.storage (shared: true)
-    // All users see the same bookings. Polls every 15s for updates.
-    // ─────────────────────────────────────────────────────────────
-    const STORAGE_KEY = 'tmg_surau_bookings_v1';
-    const MAX_CAP = 20;
+<script>
+// ════════════════════════════════════════════════════════
+//  REAL SHARED DATABASE via JSONBin.io
+//  Works in ANY browser, ANY device, incognito, phone —
+//  because data lives on JSONBin's servers, not your browser.
+// ════════════════════════════════════════════════════════
 
-    let bookings = []; // in-memory cache
+const LS_BIN  = 'tmg_bin_id';
+const LS_KEY  = 'tmg_api_key';
+const MAX_CAP = 20;
 
-    // ── Storage helpers ───────────────────────────────────────────
-    async function loadBookings() {
-      try {
-        const result = await window.storage.get(STORAGE_KEY, true); // shared=true
-        bookings = result ? JSON.parse(result.value) : [];
-      } catch {
-        bookings = [];
-      }
+let bookings  = [];
+let pollTimer = null;
+
+// ── Config (stored locally so each visitor only types it once) ──
+function getCfg() {
+  return {
+    binId:  localStorage.getItem(LS_BIN)  || '',
+    apiKey: localStorage.getItem(LS_KEY)  || ''
+  };
+}
+
+// ── JSONBin API calls ───────────────────────────────────────────
+async function apiFetch() {
+  const { binId, apiKey } = getCfg();
+  const r = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
+    headers: { 'X-Master-Key': apiKey }
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status} — check Bin ID & API key`);
+  const d = await r.json();
+  return Array.isArray(d.record?.bookings) ? d.record.bookings : [];
+}
+
+async function apiPush(list) {
+  const { binId, apiKey } = getCfg();
+  const r = await fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Master-Key': apiKey },
+    body: JSON.stringify({ bookings: list })
+  });
+  if (!r.ok) throw new Error(`Save failed: HTTP ${r.status}`);
+}
+
+// ── Setup ───────────────────────────────────────────────────────
+function showSetup() {
+  clearInterval(pollTimer);
+  document.getElementById('setupScreen').classList.remove('hidden');
+  document.getElementById('appScreen').classList.add('hidden');
+  const { binId, apiKey } = getCfg();
+  document.getElementById('setupBinId').value = binId;
+  document.getElementById('setupApiKey').value = apiKey;
+}
+
+async function saveSetup() {
+  const binId  = document.getElementById('setupBinId').value.trim();
+  const apiKey = document.getElementById('setupApiKey').value.trim();
+  const err    = document.getElementById('setupError');
+  err.classList.add('hidden');
+
+  if (!binId || !apiKey) {
+    err.textContent = 'Both fields are required.';
+    return err.classList.remove('hidden');
+  }
+
+  const btn = document.getElementById('setupBtn');
+  btn.disabled = true; btn.textContent = 'Testing connection…';
+
+  try {
+    const r = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`, {
+      headers: { 'X-Master-Key': apiKey }
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status} — Double-check Bin ID and Master Key.`);
+    await r.json();
+    localStorage.setItem(LS_BIN, binId);
+    localStorage.setItem(LS_KEY, apiKey);
+    btn.disabled = false; btn.textContent = 'Save & Connect →';
+    startApp();
+  } catch(e) {
+    err.textContent = '❌ ' + e.message;
+    err.classList.remove('hidden');
+    btn.disabled = false; btn.textContent = 'Save & Connect →';
+  }
+}
+
+// ── Sync badge ──────────────────────────────────────────────────
+function setSyncState(s) {
+  const dot = document.getElementById('syncDot');
+  const txt = document.getElementById('syncText');
+  const map = { synced:['bg-green-300','Live ✓'], syncing:['bg-yellow-300','Refreshing…'], saving:['bg-yellow-300','Saving…'], error:['bg-red-400','Offline ✗'] };
+  const [cls, label] = map[s] || map.error;
+  dot.className = `inline-block w-1.5 h-1.5 rounded-full ${cls}`;
+  txt.textContent = label;
+}
+
+// ── Time utils ──────────────────────────────────────────────────
+function pad(n)  { return String(n).padStart(2,'0'); }
+function todayStr() {
+  const d=new Date();
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
+function nowMin()  { const d=new Date(); return d.getHours()*60+d.getMinutes(); }
+function toMin(t)  { const [h,m]=t.split(':').map(Number); return h*60+m; }
+function fmtTime(t){ const [h,m]=t.split(':').map(Number); return `${h%12||12}:${pad(m)} ${h>=12?'PM':'AM'}`; }
+
+function bStatus(b) {
+  if (b.date!==todayStr()) return b.date<todayStr()?'done':'upcoming';
+  const now=nowMin(),s=toMin(b.startTime),e=toMin(b.endTime);
+  return now<s?'upcoming':now>=e?'done':'active';
+}
+function badgeHtml(st) {
+  if(st==='active')   return `<span class="badge-active text-xs px-2 py-0.5 rounded-full">Active</span>`;
+  if(st==='upcoming') return `<span class="text-xs px-2 py-0.5 rounded-full" style="background:#fef9ec;color:var(--gold);border:1px solid #f5e8c4">Upcoming</span>`;
+  return `<span class="badge-done text-xs px-2 py-0.5 rounded-full">Done</span>`;
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ── Renders ─────────────────────────────────────────────────────
+function updateCapacity() {
+  const active = bookings.filter(b=>bStatus(b)==='active').length;
+  const pct = Math.min(100,(active/MAX_CAP)*100);
+  document.getElementById('currentCount').textContent = active;
+  document.getElementById('capacityLabel').textContent = `${active} / ${MAX_CAP}`;
+  const bar=document.getElementById('capacityBar'), msg=document.getElementById('capacityMsg');
+  bar.style.width = pct+'%';
+  if(pct>=90){ bar.style.background='#dc2626'; msg.textContent='⚠️ Surau is almost full.'; msg.style.color='#dc2626'; }
+  else if(pct>=60){ bar.style.background='#d97706'; msg.textContent='🟡 Moderately occupied.'; msg.style.color='#d97706'; }
+  else { bar.style.background='var(--emerald)'; msg.textContent='✅ Surau is available. Welcome!'; msg.style.color='var(--muted)'; }
+  bar.classList.add('syncing'); setTimeout(()=>bar.classList.remove('syncing'),1200);
+}
+
+function renderToday() {
+  const list=bookings.filter(b=>b.date===todayStr()).sort((a,b)=>a.startTime.localeCompare(b.startTime));
+  document.getElementById('todayCount').textContent=`${list.length} booking${list.length!==1?'s':''}`;
+  const el=document.getElementById('todayList');
+  if(!list.length){ el.innerHTML='<p class="text-gray-400 italic text-xs py-2">No bookings yet for today.</p>'; return; }
+  el.innerHTML=list.map(b=>{
+    const st=bStatus(b), dot=st==='active'?'bg-green-500':st==='upcoming'?'bg-yellow-400':'bg-gray-300';
+    return `<div class="booking-row flex items-center gap-3 px-3 py-2.5 rounded-lg">
+      <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 ${dot}"></div>
+      <div class="flex-1 min-w-0">
+        <div class="font-medium text-sm truncate text-gray-800">${esc(b.name)}</div>
+        <div class="text-xs text-gray-400">${esc(b.purpose)} · ${fmtTime(b.startTime)} – ${fmtTime(b.endTime)}</div>
+      </div>${badgeHtml(st)}
+    </div>`;
+  }).join('');
+}
+
+function renderAll() {
+  const fd=document.getElementById('filterDate').value, fs=document.getElementById('filterStatus').value;
+  let list=[...bookings];
+  if(fd) list=list.filter(b=>b.date===fd);
+  if(fs!=='all') list=list.filter(b=>bStatus(b)===fs);
+  list.sort((a,b)=>(a.date+a.startTime).localeCompare(b.date+b.startTime));
+  const el=document.getElementById('allList'), empty=document.getElementById('emptyMsg');
+  if(!list.length){ el.innerHTML=''; empty.classList.remove('hidden'); return; }
+  empty.classList.add('hidden');
+  el.innerHTML=list.map(b=>{
+    const st=bStatus(b), dl=b.date===todayStr()?'<span class="text-green-600 font-medium">Today</span>':b.date;
+    return `<div class="booking-row flex items-start gap-3 px-3 py-3 rounded-lg border border-transparent hover:border-gray-100">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-semibold text-sm text-gray-800">${esc(b.name)}</span>${badgeHtml(st)}
+        </div>
+        <div class="text-xs text-gray-500 mt-0.5">${dl} · ${fmtTime(b.startTime)} – ${fmtTime(b.endTime)} · ${esc(b.purpose)}</div>
+        ${b.notes?`<div class="text-xs text-gray-400 mt-0.5 italic">"${esc(b.notes)}"</div>`:''}
+      </div>
+      <button onclick="deleteBooking('${b.id}')" class="btn-danger text-xs px-2.5 py-1.5 rounded-lg flex-shrink-0 mt-0.5">Remove</button>
+    </div>`;
+  }).join('');
+}
+
+function clearFilters(){ document.getElementById('filterDate').value=''; document.getElementById('filterStatus').value='all'; renderAll(); }
+
+// ── Delete ──────────────────────────────────────────────────────
+async function deleteBooking(id) {
+  bookings=bookings.filter(b=>b.id!==id);
+  setSyncState('saving');
+  try{ await apiPush(bookings); setSyncState('synced'); renderAll(); renderToday(); updateCapacity(); showToast('Booking removed.'); }
+  catch(e){ setSyncState('error'); showToast('❌ Could not remove. Try again.'); }
+}
+
+// ── Submit ──────────────────────────────────────────────────────
+async function submitBooking() {
+  const name=document.getElementById('inputName').value.trim();
+  const date=document.getElementById('inputDate').value;
+  const purpose=document.getElementById('inputPurpose').value;
+  const start=document.getElementById('inputStart').value;
+  const end=document.getElementById('inputEnd').value;
+  const notes=document.getElementById('inputNotes').value.trim();
+  const errEl=document.getElementById('formError');
+  errEl.classList.add('hidden');
+
+  if(!name)  return showFormErr('Please enter your name.');
+  if(!date)  return showFormErr('Please select a date.');
+  if(!start) return showFormErr('Please set a start time.');
+  if(!end)   return showFormErr('Please set an end time.');
+  if(toMin(end)<=toMin(start)) return showFormErr('End time must be after start time.');
+  if(toMin(end)-toMin(start)>180) return showFormErr('Maximum booking duration is 3 hours.');
+
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true; btn.textContent='⏳ Saving…';
+  try {
+    setSyncState('syncing');
+    bookings=await apiFetch(); // always fetch latest first
+    const overlap=bookings.filter(b=>{
+      if(b.date!==date)return false;
+      const bs=toMin(b.startTime),be=toMin(b.endTime),ns=toMin(start),ne=toMin(end);
+      return ns<be&&ne>bs;
+    });
+    if(overlap.length>=MAX_CAP){
+      btn.disabled=false; btn.textContent='Confirm Booking ✓'; setSyncState('synced');
+      return showFormErr(`Surau penuh at that time (max ${MAX_CAP}). Choose another slot.`);
     }
+    bookings.push({ id:Date.now().toString(36)+Math.random().toString(36).slice(2,6), name, date, purpose, startTime:start, endTime:end, notes, createdAt:new Date().toISOString() });
+    setSyncState('saving');
+    await apiPush(bookings);
+    setSyncState('synced');
+    document.getElementById('inputName').value='';
+    document.getElementById('inputNotes').value='';
+    btn.disabled=false; btn.textContent='Confirm Booking ✓';
+    renderToday(); updateCapacity();
+    showToast(`✓ Booked! ${fmtTime(start)} – ${fmtTime(end)}`);
+  } catch(e){
+    setSyncState('error'); btn.disabled=false; btn.textContent='Confirm Booking ✓';
+    showFormErr('❌ Network error. Check your internet and try again.');
+  }
+}
 
-    async function persistBookings() {
-      setSyncState('saving');
-      try {
-        await window.storage.set(STORAGE_KEY, JSON.stringify(bookings), true); // shared=true
-        setSyncState('synced');
-      } catch (e) {
-        setSyncState('error');
-        console.error('Storage save failed', e);
-      }
-    }
+function showFormErr(msg){ const e=document.getElementById('formError'); e.textContent=msg; e.classList.remove('hidden'); }
 
-    // ── Sync indicator ────────────────────────────────────────────
-    function setSyncState(state) {
-      const dot  = document.getElementById('syncDot');
-      const text = document.getElementById('syncText');
-      if (state === 'synced') {
-        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-green-300';
-        text.textContent = 'Synced';
-      } else if (state === 'saving') {
-        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-yellow-300';
-        text.textContent = 'Saving…';
-      } else if (state === 'syncing') {
-        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-yellow-300';
-        text.textContent = 'Refreshing…';
-      } else {
-        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-red-400';
-        text.textContent = 'Offline';
-      }
-    }
+// ── Poll ────────────────────────────────────────────────────────
+async function poll() {
+  try{
+    setSyncState('syncing');
+    bookings=await apiFetch();
+    setSyncState('synced');
+    updateCapacity(); renderToday();
+    if(!document.getElementById('tab-list').classList.contains('hidden')) renderAll();
+  }catch{ setSyncState('error'); }
+}
 
-    // ── Date / time utils ─────────────────────────────────────────
-    function pad(n) { return String(n).padStart(2,'0'); }
-    function todayStr() {
-      const d = new Date();
-      return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
-    }
-    function nowMinutes() {
-      const d = new Date();
-      return d.getHours()*60 + d.getMinutes();
-    }
-    function timeToMin(t) { const [h,m]=t.split(':').map(Number); return h*60+m; }
-    function formatTime(t) {
-      const [h,m]=t.split(':').map(Number);
-      return `${h%12||12}:${pad(m)} ${h>=12?'PM':'AM'}`;
-    }
-    function bookingStatus(b) {
-      if (b.date !== todayStr()) return b.date < todayStr() ? 'done' : 'upcoming';
-      const now=nowMinutes(), s=timeToMin(b.startTime), e=timeToMin(b.endTime);
-      if (now < s) return 'upcoming';
-      if (now >= e) return 'done';
-      return 'active';
-    }
-    function statusBadge(st) {
-      if (st==='active')   return `<span class="badge-active text-xs px-2 py-0.5 rounded-full">Active</span>`;
-      if (st==='upcoming') return `<span class="text-xs px-2 py-0.5 rounded-full" style="background:#fef9ec;color:var(--gold);border:1px solid #f5e8c4">Upcoming</span>`;
-      return `<span class="badge-done text-xs px-2 py-0.5 rounded-full">Done</span>`;
-    }
-    function escHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
+// ── Tab switch ──────────────────────────────────────────────────
+function switchTab(tab) {
+  document.getElementById('tab-book').classList.toggle('hidden',tab!=='book');
+  document.getElementById('tab-list').classList.toggle('hidden',tab!=='list');
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    const active=btn.getAttribute('onclick').includes(`'${tab}'`);
+    btn.classList.toggle('active-tab',active);
+    if(!active) btn.style.color='';
+  });
+  if(tab==='list') renderAll();
+}
 
-    // ── Render: capacity ──────────────────────────────────────────
-    function updateCapacity() {
-      const active = bookings.filter(b => bookingStatus(b)==='active').length;
-      const pct = Math.min(100,(active/MAX_CAP)*100);
-      document.getElementById('currentCount').textContent = active;
-      document.getElementById('capacityLabel').textContent = `${active} / ${MAX_CAP}`;
-      const bar = document.getElementById('capacityBar');
-      const msg = document.getElementById('capacityMsg');
-      bar.style.width = pct+'%';
-      if (pct>=90) {
-        bar.style.background='#dc2626';
-        msg.textContent='⚠️ Surau is almost full. Please wait or choose another time.';
-        msg.style.color='#dc2626';
-      } else if (pct>=60) {
-        bar.style.background='#d97706';
-        msg.textContent='🟡 Moderately occupied. Space available.';
-        msg.style.color='#d97706';
-      } else {
-        bar.style.background='var(--emerald)';
-        msg.textContent='✅ Surau is available. Welcome!';
-        msg.style.color='var(--muted)';
-      }
-      // Flash bar to show fresh data
-      bar.classList.add('syncing');
-      setTimeout(()=>bar.classList.remove('syncing'),1200);
-    }
+// ── Toast ───────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.remove('hide'); t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{ t.classList.remove('show'); t.classList.add('hide'); },3000);
+}
 
-    // ── Render: today list ────────────────────────────────────────
-    function renderToday() {
-      const list = bookings.filter(b=>b.date===todayStr())
-        .sort((a,b)=>a.startTime.localeCompare(b.startTime));
-      const el  = document.getElementById('todayList');
-      const cnt = document.getElementById('todayCount');
-      cnt.textContent = `${list.length} booking${list.length!==1?'s':''}`;
-      if (!list.length) {
-        el.innerHTML='<p class="text-gray-400 italic text-xs py-2">No bookings yet for today.</p>';
-        return;
-      }
-      el.innerHTML = list.map(b=>{
-        const st=bookingStatus(b);
-        return `<div class="booking-row flex items-center gap-3 px-3 py-2.5 rounded-lg">
-          <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 ${st==='active'?'bg-green-500':st==='upcoming'?'bg-yellow-400':'bg-gray-300'}"></div>
-          <div class="flex-1 min-w-0">
-            <div class="font-medium text-sm truncate text-gray-800">${escHtml(b.name)}</div>
-            <div class="text-xs text-gray-400">${escHtml(b.purpose)} · ${formatTime(b.startTime)} – ${formatTime(b.endTime)}</div>
-          </div>
-          ${statusBadge(st)}
-        </div>`;
-      }).join('');
-    }
+// ── Start app ───────────────────────────────────────────────────
+async function startApp() {
+  document.getElementById('setupScreen').classList.add('hidden');
+  document.getElementById('appScreen').classList.remove('hidden');
+  document.getElementById('loadingBar').classList.remove('hidden');
+  document.getElementById('mainContent').classList.add('hidden');
 
-    // ── Render: all bookings tab ──────────────────────────────────
-    function renderAll() {
-      const fd = document.getElementById('filterDate').value;
-      const fs = document.getElementById('filterStatus').value;
-      let list = [...bookings];
-      if (fd) list = list.filter(b=>b.date===fd);
-      if (fs!=='all') list = list.filter(b=>bookingStatus(b)===fs);
-      list.sort((a,b)=>(a.date+a.startTime).localeCompare(b.date+b.startTime));
+  const now=new Date();
+  document.getElementById('headerDate').textContent=now.toLocaleDateString('en-MY',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+  document.getElementById('inputDate').value=todayStr();
+  document.getElementById('filterDate').value=todayStr();
+  const mins=Math.ceil((now.getHours()*60+now.getMinutes())/15)*15;
+  const sh=Math.floor(mins/60)%24,sm=mins%60,eh=Math.floor((mins+30)/60)%24,em=(mins+30)%60;
+  document.getElementById('inputStart').value=`${pad(sh)}:${pad(sm)}`;
+  document.getElementById('inputEnd').value=`${pad(eh)}:${pad(em)}`;
 
-      const el    = document.getElementById('allList');
-      const empty = document.getElementById('emptyMsg');
-      if (!list.length) { el.innerHTML=''; empty.classList.remove('hidden'); return; }
-      empty.classList.add('hidden');
-      el.innerHTML = list.map(b=>{
-        const st=bookingStatus(b);
-        const dl = b.date===todayStr()?'<span class="text-green-600 font-medium">Today</span>':b.date;
-        return `<div class="booking-row flex items-start gap-3 px-3 py-3 rounded-lg border border-transparent hover:border-gray-100">
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="font-semibold text-sm text-gray-800">${escHtml(b.name)}</span>
-              ${statusBadge(st)}
-            </div>
-            <div class="text-xs text-gray-500 mt-0.5">${dl} · ${formatTime(b.startTime)} – ${formatTime(b.endTime)} · ${escHtml(b.purpose)}</div>
-            ${b.notes?`<div class="text-xs text-gray-400 mt-0.5 italic">"${escHtml(b.notes)}"</div>`:''}
-          </div>
-          <button onclick="deleteBooking('${b.id}')" class="btn-danger text-xs px-2.5 py-1.5 rounded-lg flex-shrink-0 mt-0.5">Remove</button>
-        </div>`;
-      }).join('');
-    }
+  try{
+    setSyncState('syncing');
+    bookings=await apiFetch();
+    setSyncState('synced');
+    document.getElementById('loadingBar').classList.add('hidden');
+    document.getElementById('mainContent').classList.remove('hidden');
+    updateCapacity(); renderToday();
+    clearInterval(pollTimer);
+    pollTimer=setInterval(poll,20000);
+  } catch(e) {
+    setSyncState('error');
+    document.getElementById('loadingBar').innerHTML=`
+      <div class="card p-8 text-center">
+        <div class="text-3xl mb-3">❌</div>
+        <p class="text-red-600 text-sm font-medium mb-2">Cannot connect to database</p>
+        <p class="text-gray-400 text-xs mb-4">${esc(e.message)}</p>
+        <button onclick="showSetup()" class="btn-primary px-6 py-2 rounded-lg text-sm">Re-configure ⚙️</button>
+      </div>`;
+  }
+}
 
-    function clearFilters() {
-      document.getElementById('filterDate').value='';
-      document.getElementById('filterStatus').value='all';
-      renderAll();
-    }
-
-    // ── Delete ────────────────────────────────────────────────────
-    async function deleteBooking(id) {
-      bookings = bookings.filter(b=>b.id!==id);
-      await persistBookings();
-      renderAll(); renderToday(); updateCapacity();
-      showToast('Booking removed.');
-    }
-
-    // ── Submit ────────────────────────────────────────────────────
-    async function submitBooking() {
-      const name    = document.getElementById('inputName').value.trim();
-      const date    = document.getElementById('inputDate').value;
-      const purpose = document.getElementById('inputPurpose').value;
-      const start   = document.getElementById('inputStart').value;
-      const end     = document.getElementById('inputEnd').value;
-      const notes   = document.getElementById('inputNotes').value.trim();
-      const errEl   = document.getElementById('formError');
-      errEl.classList.add('hidden');
-
-      if (!name)   return showError('Please enter your name.');
-      if (!date)   return showError('Please select a date.');
-      if (!start)  return showError('Please set a start time.');
-      if (!end)    return showError('Please set an end time.');
-      if (timeToMin(end)<=timeToMin(start)) return showError('End time must be after start time.');
-      if (timeToMin(end)-timeToMin(start)>180) return showError('Maximum booking duration is 3 hours.');
-
-      // Re-fetch latest before checking capacity (to avoid race conditions)
-      await loadBookings();
-      const overlap = bookings.filter(b=>{
-        if (b.date!==date) return false;
-        const bs=timeToMin(b.startTime),be=timeToMin(b.endTime),ns=timeToMin(start),ne=timeToMin(end);
-        return ns<be && ne>bs;
-      });
-      if (overlap.length>=MAX_CAP) return showError(`Surau penuh at that time (max ${MAX_CAP}). Please choose another slot.`);
-
-      const btn = document.getElementById('submitBtn');
-      btn.disabled=true; btn.textContent='Saving…';
-
-      bookings.push({
-        id: Date.now().toString(36)+Math.random().toString(36).slice(2,6),
-        name, date, purpose, startTime:start, endTime:end, notes,
-        createdAt: new Date().toISOString()
-      });
-
-      await persistBookings();
-
-      document.getElementById('inputName').value='';
-      document.getElementById('inputNotes').value='';
-      btn.disabled=false; btn.textContent='Confirm Booking ✓';
-
-      renderToday(); updateCapacity();
-      showToast(`✓ Booked! ${formatTime(start)} – ${formatTime(end)}`);
-    }
-
-    function showError(msg) {
-      const el=document.getElementById('formError');
-      el.textContent=msg; el.classList.remove('hidden');
-    }
-
-    // ── Auto-poll every 15s to get other users' bookings ─────────
-    async function syncAndRefresh() {
-      setSyncState('syncing');
-      await loadBookings();
-      setSyncState('synced');
-      updateCapacity(); renderToday();
-      const tab=document.getElementById('tab-list');
-      if (!tab.classList.contains('hidden')) renderAll();
-    }
-
-    // ── Tab switch ────────────────────────────────────────────────
-    function switchTab(tab) {
-      document.getElementById('tab-book').classList.toggle('hidden',tab!=='book');
-      document.getElementById('tab-list').classList.toggle('hidden',tab!=='list');
-      document.querySelectorAll('.tab-btn').forEach(btn=>{
-        const isActive = btn.getAttribute('onclick').includes(`'${tab}'`);
-        btn.classList.toggle('active-tab', isActive);
-        if (!isActive) btn.style.color='';
-      });
-      if (tab==='list') renderAll();
-    }
-
-    // ── Toast ─────────────────────────────────────────────────────
-    let toastTimer;
-    function showToast(msg) {
-      const t=document.getElementById('toast');
-      t.textContent=msg; t.classList.remove('hide'); t.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer=setTimeout(()=>{ t.classList.remove('show'); t.classList.add('hide'); },3000);
-    }
-
-    // ── Init ──────────────────────────────────────────────────────
-    async function init() {
-      const now=new Date();
-      document.getElementById('headerDate').textContent=now.toLocaleDateString('en-MY',{
-        weekday:'short',day:'numeric',month:'short',year:'numeric'
-      });
-      document.getElementById('inputDate').value=todayStr();
-      document.getElementById('filterDate').value=todayStr();
-
-      const mins=Math.ceil((now.getHours()*60+now.getMinutes())/15)*15;
-      const sh=Math.floor(mins/60)%24,sm=mins%60,eh=Math.floor((mins+30)/60)%24,em=(mins+30)%60;
-      document.getElementById('inputStart').value=`${pad(sh)}:${pad(sm)}`;
-      document.getElementById('inputEnd').value=`${pad(eh)}:${pad(em)}`;
-
-      // Load shared data
-      await loadBookings();
-      document.getElementById('loadingOverlay').classList.add('hidden');
-      document.getElementById('mainContent').classList.remove('hidden');
-
-      updateCapacity(); renderToday();
-      setSyncState('synced');
-
-      // Poll every 15 seconds for live updates from other users
-      setInterval(syncAndRefresh, 15000);
-    }
-
-    init();
-  </script>
+// ── Boot ────────────────────────────────────────────────────────
+(function(){
+  const { binId, apiKey } = getCfg();
+  if(binId && apiKey){ startApp(); }
+  else { document.getElementById('setupScreen').classList.remove('hidden'); }
+})();
+</script>
 </body>
 </html>
