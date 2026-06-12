@@ -12,126 +12,44 @@
       --emerald-light: #22875f;
       --emerald-pale: #e6f4ee;
       --gold: #b89a4e;
-      --gold-light: #f5e8c4;
       --cream: #faf8f4;
-      --text: #1c1c1c;
       --muted: #6b7280;
       --border: #d8e8e1;
     }
-    body {
-      background-color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-    }
-    h1, h2, .display { font-family: 'Playfair Display', serif; }
-
-    /* Geometric motif border */
-    .geo-border {
-      border-top: 3px solid var(--emerald);
-      position: relative;
-    }
-    .geo-border::before {
-      content: '';
-      display: block;
-      height: 6px;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--gold) 0px, var(--gold) 10px,
-        transparent 10px, transparent 20px
-      );
-    }
-
-    /* Arabesque header accent */
+    body { background-color: var(--cream); font-family: 'Inter', sans-serif; color: #1c1c1c; }
+    h1, h2 { font-family: 'Playfair Display', serif; }
     .header-pattern {
       background-color: var(--emerald);
-      background-image:
-        radial-gradient(circle at 25% 50%, rgba(184,154,78,0.15) 0%, transparent 60%),
-        radial-gradient(circle at 75% 50%, rgba(184,154,78,0.10) 0%, transparent 60%);
+      background-image: radial-gradient(circle at 25% 50%, rgba(184,154,78,0.15) 0%, transparent 60%),
+                        radial-gradient(circle at 75% 50%, rgba(184,154,78,0.10) 0%, transparent 60%);
     }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(26,107,74,0.06);
-    }
-
-    .btn-primary {
-      background-color: var(--emerald);
-      color: white;
-      transition: background-color 0.2s, transform 0.1s;
-    }
+    .card { background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 8px rgba(26,107,74,0.06); }
+    .btn-primary { background-color: var(--emerald); color: white; transition: background-color 0.2s, transform 0.1s; }
     .btn-primary:hover { background-color: var(--emerald-light); }
     .btn-primary:active { transform: scale(0.98); }
-
-    .btn-danger {
-      background-color: #fee2e2;
-      color: #b91c1c;
-      transition: background-color 0.2s;
-    }
+    .btn-primary:disabled { background-color: #9ca3af; cursor: not-allowed; }
+    .btn-danger { background-color: #fee2e2; color: #b91c1c; transition: background-color 0.2s; }
     .btn-danger:hover { background-color: #fecaca; }
-
-    .input-field {
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      background: white;
-    }
-    .input-field:focus {
-      outline: none;
-      border-color: var(--emerald);
-      box-shadow: 0 0 0 3px rgba(26,107,74,0.12);
-    }
-
-    .badge-active {
-      background: var(--emerald-pale);
-      color: var(--emerald);
-      border: 1px solid rgba(26,107,74,0.2);
-    }
-    .badge-done {
-      background: #f3f4f6;
-      color: var(--muted);
-      border: 1px solid #e5e7eb;
-    }
-
-    .capacity-ring {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .booking-row {
-      transition: background-color 0.15s;
-    }
+    .input-field { border: 1.5px solid var(--border); border-radius: 8px; transition: border-color 0.2s, box-shadow 0.2s; background: white; }
+    .input-field:focus { outline: none; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(26,107,74,0.12); }
+    .badge-active { background: var(--emerald-pale); color: var(--emerald); border: 1px solid rgba(26,107,74,0.2); }
+    .badge-done { background: #f3f4f6; color: var(--muted); border: 1px solid #e5e7eb; }
+    .booking-row { transition: background-color 0.15s; }
     .booking-row:hover { background-color: var(--emerald-pale); }
-
-    /* Pulse dot for live indicator */
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.3); }
-    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
     .pulse-dot { animation: pulse-dot 2s infinite; }
-
-    /* Toast */
-    #toast {
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    #toast.hide { opacity: 0; transform: translateY(-12px); pointer-events: none; }
-    #toast.show { opacity: 1; transform: translateY(0); }
-
-    /* Tab underline */
-    .tab-btn.active-tab {
-      border-bottom: 2.5px solid var(--emerald);
-      color: var(--emerald);
-      font-weight: 600;
-    }
-
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { animation: spin 0.8s linear infinite; display: inline-block; }
+    #toast { transition: opacity 0.3s, transform 0.3s; }
+    #toast.hide { opacity:0; transform:translateY(-12px); pointer-events:none; }
+    #toast.show { opacity:1; transform:translateY(0); }
+    .tab-btn.active-tab { border-bottom: 2.5px solid var(--emerald); color: var(--emerald); font-weight: 600; }
     select.input-field { cursor: pointer; }
+    @media (max-width:640px) { .hide-mobile { display:none !important; } }
 
-    @media (max-width: 640px) {
-      .hide-mobile { display: none !important; }
-    }
+    /* Sync pulse on capacity bar */
+    @keyframes flash { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .syncing { animation: flash 0.6s ease 2; }
   </style>
 </head>
 <body class="min-h-screen pb-16">
@@ -140,163 +58,198 @@
   <header class="header-pattern text-white px-6 py-7 shadow-lg">
     <div class="max-w-3xl mx-auto flex items-center gap-4">
       <div class="text-4xl select-none">🕌</div>
-      <div>
+      <div class="flex-1">
         <div class="text-xs font-medium tracking-widest uppercase opacity-75 mb-1">Pusat Islam TMG</div>
-        <h1 class="text-2xl font-bold leading-tight" style="font-family:'Playfair Display',serif">
-          Muslimah Surau Booking
-        </h1>
+        <h1 class="text-2xl font-bold leading-tight">Muslimah Surau Booking</h1>
         <div class="text-xs opacity-60 mt-0.5 flex items-center gap-1.5">
           <span class="pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-green-300"></span>
           Live · <span id="headerDate"></span>
         </div>
       </div>
+      <!-- Sync status -->
+      <div id="syncBadge" class="text-xs bg-white/10 rounded-full px-3 py-1 flex items-center gap-1.5">
+        <span id="syncDot" class="inline-block w-1.5 h-1.5 rounded-full bg-green-300"></span>
+        <span id="syncText">Synced</span>
+      </div>
     </div>
   </header>
 
-  <!-- Capacity Banner -->
-  <div class="max-w-3xl mx-auto px-4 mt-5">
-    <div class="card p-4 flex items-center gap-5">
-      <div class="flex-shrink-0 text-center">
-        <div class="text-4xl font-bold" style="color:var(--emerald)" id="currentCount">0</div>
-        <div class="text-xs text-gray-400 mt-0.5">In Surau Now</div>
-      </div>
-      <div class="flex-1">
-        <div class="flex justify-between text-xs mb-1.5">
-          <span class="font-medium" style="color:var(--emerald)">Current Occupancy</span>
-          <span id="capacityLabel" class="text-gray-500">0 / 20</span>
-        </div>
-        <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
-          <div id="capacityBar" class="h-3 rounded-full transition-all duration-500"
-               style="background:var(--emerald);width:0%"></div>
-        </div>
-        <div id="capacityMsg" class="text-xs mt-1.5 text-gray-400">Surau is available.</div>
-      </div>
-      <div class="flex-shrink-0 text-right hide-mobile">
-        <div class="text-xs text-gray-400">Max Capacity</div>
-        <div class="text-xl font-semibold text-gray-700">20</div>
-      </div>
+  <!-- Loading overlay -->
+  <div id="loadingOverlay" class="max-w-3xl mx-auto px-4 mt-8 text-center">
+    <div class="card p-10">
+      <div class="spinner text-3xl mb-3">🔄</div>
+      <p class="text-gray-500 text-sm">Loading shared bookings...</p>
     </div>
   </div>
 
-  <!-- Tabs -->
-  <div class="max-w-3xl mx-auto px-4 mt-5">
-    <div class="flex gap-0 border-b border-gray-200">
-      <button class="tab-btn active-tab px-5 py-3 text-sm" onclick="switchTab('book')">Book Surau</button>
-      <button class="tab-btn px-5 py-3 text-sm text-gray-500" onclick="switchTab('list')">All Bookings</button>
-    </div>
-  </div>
+  <!-- Main content (hidden until loaded) -->
+  <div id="mainContent" class="hidden">
 
-  <!-- TAB: Book Surau -->
-  <div id="tab-book" class="max-w-3xl mx-auto px-4 mt-5">
-    <div class="card p-6">
-      <h2 class="text-lg font-semibold mb-1" style="color:var(--emerald)">New Booking</h2>
-      <p class="text-xs text-gray-400 mb-5">Fill in your details to reserve your time at the surau.</p>
-
-      <div class="space-y-4">
-        <!-- Name -->
-        <div>
-          <label class="block text-sm font-medium mb-1.5 text-gray-700">Your Name <span class="text-red-400">*</span></label>
-          <input id="inputName" type="text" placeholder="e.g. Siti Aishah binti Razak"
-            class="input-field w-full px-4 py-2.5 text-sm" />
+    <!-- Capacity Banner -->
+    <div class="max-w-3xl mx-auto px-4 mt-5">
+      <div class="card p-4 flex items-center gap-5">
+        <div class="flex-shrink-0 text-center">
+          <div class="text-4xl font-bold" style="color:var(--emerald)" id="currentCount">0</div>
+          <div class="text-xs text-gray-400 mt-0.5">In Surau Now</div>
         </div>
-
-        <!-- Date & Time Start -->
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-sm font-medium mb-1.5 text-gray-700">Date <span class="text-red-400">*</span></label>
-            <input id="inputDate" type="date" class="input-field w-full px-4 py-2.5 text-sm" />
+        <div class="flex-1">
+          <div class="flex justify-between text-xs mb-1.5">
+            <span class="font-medium" style="color:var(--emerald)">Current Occupancy</span>
+            <span id="capacityLabel" class="text-gray-500">0 / 20</span>
           </div>
-          <div>
-            <label class="block text-sm font-medium mb-1.5 text-gray-700">Purpose</label>
-            <select id="inputPurpose" class="input-field w-full px-4 py-2.5 text-sm">
-              <option value="Solat Fardhu">Solat Fardhu</option>
-              <option value="Solat Sunat">Solat Sunat</option>
-              <option value="Tilawah Al-Quran">Tilawah Al-Quran</option>
-              <option value="Tazkirah / Halaqah">Tazkirah / Halaqah</option>
-              <option value="Rehat / Wudhu">Rehat / Wudhu</option>
-              <option value="Lain-lain">Lain-lain</option>
-            </select>
+          <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+            <div id="capacityBar" class="h-3 rounded-full transition-all duration-500" style="background:var(--emerald);width:0%"></div>
           </div>
+          <div id="capacityMsg" class="text-xs mt-1.5 text-gray-400">Surau is available.</div>
         </div>
-
-        <!-- Time Start & End -->
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-sm font-medium mb-1.5 text-gray-700">Start Time <span class="text-red-400">*</span></label>
-            <input id="inputStart" type="time" class="input-field w-full px-4 py-2.5 text-sm" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium mb-1.5 text-gray-700">End Time <span class="text-red-400">*</span></label>
-            <input id="inputEnd" type="time" class="input-field w-full px-4 py-2.5 text-sm" />
-          </div>
+        <div class="flex-shrink-0 text-right hide-mobile">
+          <div class="text-xs text-gray-400">Max Capacity</div>
+          <div class="text-xl font-semibold text-gray-700">20</div>
         </div>
-
-        <!-- Notes -->
-        <div>
-          <label class="block text-sm font-medium mb-1.5 text-gray-700">Notes <span class="text-gray-400 font-normal">(optional)</span></label>
-          <input id="inputNotes" type="text" placeholder="e.g. Bringing 3 friends"
-            class="input-field w-full px-4 py-2.5 text-sm" />
-        </div>
-
-        <!-- Error -->
-        <div id="formError" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5"></div>
-
-        <!-- Submit -->
-        <button onclick="submitBooking()"
-          class="btn-primary w-full py-3 rounded-xl font-semibold text-sm tracking-wide mt-1">
-          Confirm Booking ✓
-        </button>
       </div>
     </div>
 
-    <!-- Today's Schedule Preview -->
-    <div class="mt-5 card p-5">
-      <div class="flex items-center justify-between mb-3">
-        <h2 class="font-semibold text-sm text-gray-700">Today's Schedule</h2>
-        <span id="todayCount" class="text-xs px-2 py-0.5 rounded-full badge-active">0 bookings</span>
-      </div>
-      <div id="todayList" class="space-y-2 text-sm text-gray-400 italic">
-        No bookings yet for today.
+    <!-- Tabs -->
+    <div class="max-w-3xl mx-auto px-4 mt-5">
+      <div class="flex gap-0 border-b border-gray-200">
+        <button class="tab-btn active-tab px-5 py-3 text-sm" onclick="switchTab('book')">Book Surau</button>
+        <button class="tab-btn px-5 py-3 text-sm text-gray-500" onclick="switchTab('list')">All Bookings</button>
       </div>
     </div>
-  </div>
 
-  <!-- TAB: All Bookings -->
-  <div id="tab-list" class="max-w-3xl mx-auto px-4 mt-5 hidden">
-    <div class="card p-5">
-      <!-- Filter row -->
-      <div class="flex items-center gap-3 mb-4 flex-wrap">
-        <input id="filterDate" type="date" class="input-field px-3 py-2 text-sm flex-1 min-w-[140px]" onchange="renderAll()" />
-        <select id="filterStatus" class="input-field px-3 py-2 text-sm" onchange="renderAll()">
-          <option value="all">All Status</option>
-          <option value="active">Active Now</option>
-          <option value="upcoming">Upcoming</option>
-          <option value="done">Done</option>
-        </select>
-        <button onclick="clearFilters()" class="text-xs text-gray-400 hover:text-red-500 transition-colors">Reset</button>
+    <!-- TAB: Book Surau -->
+    <div id="tab-book" class="max-w-3xl mx-auto px-4 mt-5">
+      <div class="card p-6">
+        <h2 class="text-lg font-semibold mb-1" style="color:var(--emerald)">New Booking</h2>
+        <p class="text-xs text-gray-400 mb-5">Fill in your details to reserve your time at the surau.</p>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium mb-1.5 text-gray-700">Your Name <span class="text-red-400">*</span></label>
+            <input id="inputName" type="text" placeholder="e.g. Siti Aishah binti Razak" class="input-field w-full px-4 py-2.5 text-sm"/>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium mb-1.5 text-gray-700">Date <span class="text-red-400">*</span></label>
+              <input id="inputDate" type="date" class="input-field w-full px-4 py-2.5 text-sm"/>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5 text-gray-700">Purpose</label>
+              <select id="inputPurpose" class="input-field w-full px-4 py-2.5 text-sm">
+                <option>Solat Fardhu</option>
+                <option>Solat Sunat</option>
+                <option>Tilawah Al-Quran</option>
+                <option>Tazkirah / Halaqah</option>
+                <option>Rehat / Wudhu</option>
+                <option>Lain-lain</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-sm font-medium mb-1.5 text-gray-700">Start Time <span class="text-red-400">*</span></label>
+              <input id="inputStart" type="time" class="input-field w-full px-4 py-2.5 text-sm"/>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1.5 text-gray-700">End Time <span class="text-red-400">*</span></label>
+              <input id="inputEnd" type="time" class="input-field w-full px-4 py-2.5 text-sm"/>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5 text-gray-700">Notes <span class="text-gray-400 font-normal">(optional)</span></label>
+            <input id="inputNotes" type="text" placeholder="e.g. Bringing 3 friends" class="input-field w-full px-4 py-2.5 text-sm"/>
+          </div>
+          <div id="formError" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2.5"></div>
+          <button id="submitBtn" onclick="submitBooking()" class="btn-primary w-full py-3 rounded-xl font-semibold text-sm tracking-wide mt-1">
+            Confirm Booking ✓
+          </button>
+        </div>
       </div>
 
-      <div id="allList" class="space-y-2"></div>
-      <div id="emptyMsg" class="hidden text-sm text-gray-400 italic text-center py-8">No bookings found.</div>
+      <!-- Today's Schedule -->
+      <div class="mt-5 card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="font-semibold text-sm text-gray-700">Today's Schedule</h2>
+          <span id="todayCount" class="text-xs px-2 py-0.5 rounded-full badge-active">0 bookings</span>
+        </div>
+        <div id="todayList" class="space-y-2 text-sm text-gray-400 italic">No bookings yet for today.</div>
+      </div>
     </div>
-  </div>
+
+    <!-- TAB: All Bookings -->
+    <div id="tab-list" class="max-w-3xl mx-auto px-4 mt-5 hidden">
+      <div class="card p-5">
+        <div class="flex items-center gap-3 mb-4 flex-wrap">
+          <input id="filterDate" type="date" class="input-field px-3 py-2 text-sm flex-1 min-w-[140px]" onchange="renderAll()"/>
+          <select id="filterStatus" class="input-field px-3 py-2 text-sm" onchange="renderAll()">
+            <option value="all">All Status</option>
+            <option value="active">Active Now</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="done">Done</option>
+          </select>
+          <button onclick="clearFilters()" class="text-xs text-gray-400 hover:text-red-500 transition-colors">Reset</button>
+        </div>
+        <div id="allList" class="space-y-2"></div>
+        <div id="emptyMsg" class="hidden text-sm text-gray-400 italic text-center py-8">No bookings found.</div>
+      </div>
+    </div>
+
+  </div><!-- /mainContent -->
 
   <!-- Toast -->
   <div id="toast" class="hide fixed top-5 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl shadow-xl text-sm font-medium text-white flex items-center gap-2"
        style="background:var(--emerald);min-width:220px;max-width:90vw"></div>
 
   <script>
+    // ─────────────────────────────────────────────────────────────
+    // SHARED STORAGE — uses window.storage (shared: true)
+    // All users see the same bookings. Polls every 15s for updates.
+    // ─────────────────────────────────────────────────────────────
+    const STORAGE_KEY = 'tmg_surau_bookings_v1';
     const MAX_CAP = 20;
-    const STORAGE_KEY = 'tmg_surau_bookings';
 
-    // ── Helpers ──────────────────────────────────────────────────────────────
-    function getBookings() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-      catch { return []; }
+    let bookings = []; // in-memory cache
+
+    // ── Storage helpers ───────────────────────────────────────────
+    async function loadBookings() {
+      try {
+        const result = await window.storage.get(STORAGE_KEY, true); // shared=true
+        bookings = result ? JSON.parse(result.value) : [];
+      } catch {
+        bookings = [];
+      }
     }
-    function saveBookings(arr) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+
+    async function persistBookings() {
+      setSyncState('saving');
+      try {
+        await window.storage.set(STORAGE_KEY, JSON.stringify(bookings), true); // shared=true
+        setSyncState('synced');
+      } catch (e) {
+        setSyncState('error');
+        console.error('Storage save failed', e);
+      }
     }
+
+    // ── Sync indicator ────────────────────────────────────────────
+    function setSyncState(state) {
+      const dot  = document.getElementById('syncDot');
+      const text = document.getElementById('syncText');
+      if (state === 'synced') {
+        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-green-300';
+        text.textContent = 'Synced';
+      } else if (state === 'saving') {
+        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-yellow-300';
+        text.textContent = 'Saving…';
+      } else if (state === 'syncing') {
+        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-yellow-300';
+        text.textContent = 'Refreshing…';
+      } else {
+        dot.className = 'inline-block w-1.5 h-1.5 rounded-full bg-red-400';
+        text.textContent = 'Offline';
+      }
+    }
+
+    // ── Date / time utils ─────────────────────────────────────────
     function pad(n) { return String(n).padStart(2,'0'); }
     function todayStr() {
       const d = new Date();
@@ -306,76 +259,68 @@
       const d = new Date();
       return d.getHours()*60 + d.getMinutes();
     }
-    function timeToMin(t) {
-      const [h,m] = t.split(':').map(Number);
-      return h*60+m;
-    }
+    function timeToMin(t) { const [h,m]=t.split(':').map(Number); return h*60+m; }
     function formatTime(t) {
-      const [h,m] = t.split(':').map(Number);
-      const ampm = h >= 12 ? 'PM' : 'AM';
-      const hh = h % 12 || 12;
-      return `${hh}:${pad(m)} ${ampm}`;
+      const [h,m]=t.split(':').map(Number);
+      return `${h%12||12}:${pad(m)} ${h>=12?'PM':'AM'}`;
     }
     function bookingStatus(b) {
-      if (b.date !== todayStr()) {
-        return b.date < todayStr() ? 'done' : 'upcoming';
-      }
-      const now = nowMinutes();
-      const s = timeToMin(b.startTime), e = timeToMin(b.endTime);
+      if (b.date !== todayStr()) return b.date < todayStr() ? 'done' : 'upcoming';
+      const now=nowMinutes(), s=timeToMin(b.startTime), e=timeToMin(b.endTime);
       if (now < s) return 'upcoming';
       if (now >= e) return 'done';
       return 'active';
     }
-    function statusBadge(status) {
-      if (status === 'active')   return `<span class="badge-active text-xs px-2 py-0.5 rounded-full">Active</span>`;
-      if (status === 'upcoming') return `<span class="text-xs px-2 py-0.5 rounded-full" style="background:#fef9ec;color:var(--gold);border:1px solid #f5e8c4">Upcoming</span>`;
+    function statusBadge(st) {
+      if (st==='active')   return `<span class="badge-active text-xs px-2 py-0.5 rounded-full">Active</span>`;
+      if (st==='upcoming') return `<span class="text-xs px-2 py-0.5 rounded-full" style="background:#fef9ec;color:var(--gold);border:1px solid #f5e8c4">Upcoming</span>`;
       return `<span class="badge-done text-xs px-2 py-0.5 rounded-full">Done</span>`;
     }
-
-    // ── Capacity ─────────────────────────────────────────────────────────────
-    function updateCapacity() {
-      const bookings = getBookings();
-      const active = bookings.filter(b => bookingStatus(b) === 'active').length;
-      const pct = Math.min(100, (active / MAX_CAP) * 100);
-
-      document.getElementById('currentCount').textContent = active;
-      document.getElementById('capacityLabel').textContent = `${active} / ${MAX_CAP}`;
-      document.getElementById('capacityBar').style.width = pct + '%';
-
-      const bar = document.getElementById('capacityBar');
-      const msg = document.getElementById('capacityMsg');
-      if (pct >= 90) {
-        bar.style.background = '#dc2626';
-        msg.textContent = '⚠️ Surau is almost full. Please wait or choose another time.';
-        msg.style.color = '#dc2626';
-      } else if (pct >= 60) {
-        bar.style.background = '#d97706';
-        msg.textContent = '🟡 Moderately occupied. Space available.';
-        msg.style.color = '#d97706';
-      } else {
-        bar.style.background = 'var(--emerald)';
-        msg.textContent = '✅ Surau is available. Welcome!';
-        msg.style.color = 'var(--muted)';
-      }
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    // ── Today's schedule ─────────────────────────────────────────────────────
+    // ── Render: capacity ──────────────────────────────────────────
+    function updateCapacity() {
+      const active = bookings.filter(b => bookingStatus(b)==='active').length;
+      const pct = Math.min(100,(active/MAX_CAP)*100);
+      document.getElementById('currentCount').textContent = active;
+      document.getElementById('capacityLabel').textContent = `${active} / ${MAX_CAP}`;
+      const bar = document.getElementById('capacityBar');
+      const msg = document.getElementById('capacityMsg');
+      bar.style.width = pct+'%';
+      if (pct>=90) {
+        bar.style.background='#dc2626';
+        msg.textContent='⚠️ Surau is almost full. Please wait or choose another time.';
+        msg.style.color='#dc2626';
+      } else if (pct>=60) {
+        bar.style.background='#d97706';
+        msg.textContent='🟡 Moderately occupied. Space available.';
+        msg.style.color='#d97706';
+      } else {
+        bar.style.background='var(--emerald)';
+        msg.textContent='✅ Surau is available. Welcome!';
+        msg.style.color='var(--muted)';
+      }
+      // Flash bar to show fresh data
+      bar.classList.add('syncing');
+      setTimeout(()=>bar.classList.remove('syncing'),1200);
+    }
+
+    // ── Render: today list ────────────────────────────────────────
     function renderToday() {
-      const bookings = getBookings().filter(b => b.date === todayStr())
-        .sort((a,b) => a.startTime.localeCompare(b.startTime));
-
-      const el = document.getElementById('todayList');
+      const list = bookings.filter(b=>b.date===todayStr())
+        .sort((a,b)=>a.startTime.localeCompare(b.startTime));
+      const el  = document.getElementById('todayList');
       const cnt = document.getElementById('todayCount');
-      cnt.textContent = `${bookings.length} booking${bookings.length!==1?'s':''}`;
-
-      if (!bookings.length) {
-        el.innerHTML = `<p class="text-gray-400 italic text-xs py-2">No bookings yet for today.</p>`;
+      cnt.textContent = `${list.length} booking${list.length!==1?'s':''}`;
+      if (!list.length) {
+        el.innerHTML='<p class="text-gray-400 italic text-xs py-2">No bookings yet for today.</p>';
         return;
       }
-      el.innerHTML = bookings.map(b => {
-        const st = bookingStatus(b);
-        return `
-        <div class="booking-row flex items-center gap-3 px-3 py-2.5 rounded-lg">
+      el.innerHTML = list.map(b=>{
+        const st=bookingStatus(b);
+        return `<div class="booking-row flex items-center gap-3 px-3 py-2.5 rounded-lg">
           <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 ${st==='active'?'bg-green-500':st==='upcoming'?'bg-yellow-400':'bg-gray-300'}"></div>
           <div class="flex-1 min-w-0">
             <div class="font-medium text-sm truncate text-gray-800">${escHtml(b.name)}</div>
@@ -386,65 +331,52 @@
       }).join('');
     }
 
-    // ── All Bookings tab ──────────────────────────────────────────────────────
+    // ── Render: all bookings tab ──────────────────────────────────
     function renderAll() {
-      const filterDate   = document.getElementById('filterDate').value;
-      const filterStatus = document.getElementById('filterStatus').value;
-      let bookings = getBookings();
+      const fd = document.getElementById('filterDate').value;
+      const fs = document.getElementById('filterStatus').value;
+      let list = [...bookings];
+      if (fd) list = list.filter(b=>b.date===fd);
+      if (fs!=='all') list = list.filter(b=>bookingStatus(b)===fs);
+      list.sort((a,b)=>(a.date+a.startTime).localeCompare(b.date+b.startTime));
 
-      if (filterDate) bookings = bookings.filter(b => b.date === filterDate);
-      if (filterStatus !== 'all') bookings = bookings.filter(b => bookingStatus(b) === filterStatus);
-      bookings.sort((a,b) => (a.date+a.startTime).localeCompare(b.date+b.startTime));
-
-      const el = document.getElementById('allList');
+      const el    = document.getElementById('allList');
       const empty = document.getElementById('emptyMsg');
-
-      if (!bookings.length) {
-        el.innerHTML = '';
-        empty.classList.remove('hidden');
-        return;
-      }
+      if (!list.length) { el.innerHTML=''; empty.classList.remove('hidden'); return; }
       empty.classList.add('hidden');
-
-      el.innerHTML = bookings.map(b => {
-        const st = bookingStatus(b);
-        const dateLabel = b.date === todayStr() ? '<span class="text-green-600 font-medium">Today</span>' : b.date;
-        return `
-        <div class="booking-row flex items-start gap-3 px-3 py-3 rounded-lg border border-transparent hover:border-gray-100">
+      el.innerHTML = list.map(b=>{
+        const st=bookingStatus(b);
+        const dl = b.date===todayStr()?'<span class="text-green-600 font-medium">Today</span>':b.date;
+        return `<div class="booking-row flex items-start gap-3 px-3 py-3 rounded-lg border border-transparent hover:border-gray-100">
           <div class="flex-1 min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
               <span class="font-semibold text-sm text-gray-800">${escHtml(b.name)}</span>
               ${statusBadge(st)}
             </div>
-            <div class="text-xs text-gray-500 mt-0.5">
-              ${dateLabel} · ${formatTime(b.startTime)} – ${formatTime(b.endTime)} · ${escHtml(b.purpose)}
-            </div>
-            ${b.notes ? `<div class="text-xs text-gray-400 mt-0.5 italic">"${escHtml(b.notes)}"</div>` : ''}
+            <div class="text-xs text-gray-500 mt-0.5">${dl} · ${formatTime(b.startTime)} – ${formatTime(b.endTime)} · ${escHtml(b.purpose)}</div>
+            ${b.notes?`<div class="text-xs text-gray-400 mt-0.5 italic">"${escHtml(b.notes)}"</div>`:''}
           </div>
-          <button onclick="deleteBooking('${b.id}')"
-            class="btn-danger text-xs px-2.5 py-1.5 rounded-lg flex-shrink-0 mt-0.5">Remove</button>
+          <button onclick="deleteBooking('${b.id}')" class="btn-danger text-xs px-2.5 py-1.5 rounded-lg flex-shrink-0 mt-0.5">Remove</button>
         </div>`;
       }).join('');
     }
 
     function clearFilters() {
-      document.getElementById('filterDate').value = '';
-      document.getElementById('filterStatus').value = 'all';
+      document.getElementById('filterDate').value='';
+      document.getElementById('filterStatus').value='all';
       renderAll();
     }
 
-    // ── Delete ────────────────────────────────────────────────────────────────
-    function deleteBooking(id) {
-      const bookings = getBookings().filter(b => b.id !== id);
-      saveBookings(bookings);
-      renderAll();
-      renderToday();
-      updateCapacity();
+    // ── Delete ────────────────────────────────────────────────────
+    async function deleteBooking(id) {
+      bookings = bookings.filter(b=>b.id!==id);
+      await persistBookings();
+      renderAll(); renderToday(); updateCapacity();
       showToast('Booking removed.');
     }
 
-    // ── Submit ────────────────────────────────────────────────────────────────
-    function submitBooking() {
+    // ── Submit ────────────────────────────────────────────────────
+    async function submitBooking() {
       const name    = document.getElementById('inputName').value.trim();
       const date    = document.getElementById('inputDate').value;
       const purpose = document.getElementById('inputPurpose').value;
@@ -452,104 +384,103 @@
       const end     = document.getElementById('inputEnd').value;
       const notes   = document.getElementById('inputNotes').value.trim();
       const errEl   = document.getElementById('formError');
-
       errEl.classList.add('hidden');
 
       if (!name)   return showError('Please enter your name.');
       if (!date)   return showError('Please select a date.');
       if (!start)  return showError('Please set a start time.');
       if (!end)    return showError('Please set an end time.');
-      if (timeToMin(end) <= timeToMin(start)) return showError('End time must be after start time.');
-      if (timeToMin(end) - timeToMin(start) > 180) return showError('Maximum booking duration is 3 hours.');
+      if (timeToMin(end)<=timeToMin(start)) return showError('End time must be after start time.');
+      if (timeToMin(end)-timeToMin(start)>180) return showError('Maximum booking duration is 3 hours.');
 
-      // Capacity check for overlapping active on same date
-      const bookings = getBookings();
-      const overlap = bookings.filter(b => {
-        if (b.date !== date) return false;
-        const bs = timeToMin(b.startTime), be = timeToMin(b.endTime);
-        const ns = timeToMin(start), ne = timeToMin(end);
-        return ns < be && ne > bs;
+      // Re-fetch latest before checking capacity (to avoid race conditions)
+      await loadBookings();
+      const overlap = bookings.filter(b=>{
+        if (b.date!==date) return false;
+        const bs=timeToMin(b.startTime),be=timeToMin(b.endTime),ns=timeToMin(start),ne=timeToMin(end);
+        return ns<be && ne>bs;
       });
-      if (overlap.length >= MAX_CAP) return showError(`Surau is fully booked at that time (max ${MAX_CAP} users). Please choose another slot.`);
+      if (overlap.length>=MAX_CAP) return showError(`Surau penuh at that time (max ${MAX_CAP}). Please choose another slot.`);
 
-      const newBooking = {
-        id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
-        name, date, purpose, startTime: start, endTime: end, notes,
+      const btn = document.getElementById('submitBtn');
+      btn.disabled=true; btn.textContent='Saving…';
+
+      bookings.push({
+        id: Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+        name, date, purpose, startTime:start, endTime:end, notes,
         createdAt: new Date().toISOString()
-      };
+      });
 
-      bookings.push(newBooking);
-      saveBookings(bookings);
+      await persistBookings();
 
-      // Reset form
-      document.getElementById('inputName').value = '';
-      document.getElementById('inputNotes').value = '';
+      document.getElementById('inputName').value='';
+      document.getElementById('inputNotes').value='';
+      btn.disabled=false; btn.textContent='Confirm Booking ✓';
 
-      renderToday();
-      updateCapacity();
-      showToast(`✓ Booked for ${formatTime(start)} – ${formatTime(end)}`);
+      renderToday(); updateCapacity();
+      showToast(`✓ Booked! ${formatTime(start)} – ${formatTime(end)}`);
     }
 
     function showError(msg) {
-      const el = document.getElementById('formError');
-      el.textContent = msg;
-      el.classList.remove('hidden');
+      const el=document.getElementById('formError');
+      el.textContent=msg; el.classList.remove('hidden');
     }
 
-    // ── Tab switching ─────────────────────────────────────────────────────────
+    // ── Auto-poll every 15s to get other users' bookings ─────────
+    async function syncAndRefresh() {
+      setSyncState('syncing');
+      await loadBookings();
+      setSyncState('synced');
+      updateCapacity(); renderToday();
+      const tab=document.getElementById('tab-list');
+      if (!tab.classList.contains('hidden')) renderAll();
+    }
+
+    // ── Tab switch ────────────────────────────────────────────────
     function switchTab(tab) {
-      document.getElementById('tab-book').classList.toggle('hidden', tab !== 'book');
-      document.getElementById('tab-list').classList.toggle('hidden', tab !== 'list');
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.toggle('active-tab', btn.getAttribute('onclick').includes(`'${tab}'`));
-        if (!btn.classList.contains('active-tab')) btn.style.color = '';
+      document.getElementById('tab-book').classList.toggle('hidden',tab!=='book');
+      document.getElementById('tab-list').classList.toggle('hidden',tab!=='list');
+      document.querySelectorAll('.tab-btn').forEach(btn=>{
+        const isActive = btn.getAttribute('onclick').includes(`'${tab}'`);
+        btn.classList.toggle('active-tab', isActive);
+        if (!isActive) btn.style.color='';
       });
-      if (tab === 'list') renderAll();
+      if (tab==='list') renderAll();
     }
 
-    // ── Toast ─────────────────────────────────────────────────────────────────
+    // ── Toast ─────────────────────────────────────────────────────
     let toastTimer;
     function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.classList.remove('hide');
-      t.classList.add('show');
+      const t=document.getElementById('toast');
+      t.textContent=msg; t.classList.remove('hide'); t.classList.add('show');
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        t.classList.remove('show');
-        t.classList.add('hide');
-      }, 3000);
+      toastTimer=setTimeout(()=>{ t.classList.remove('show'); t.classList.add('hide'); },3000);
     }
 
-    // ── XSS safety ───────────────────────────────────────────────────────────
-    function escHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }
-
-    // ── Init ──────────────────────────────────────────────────────────────────
-    function init() {
-      // Set default date to today
-      document.getElementById('inputDate').value = todayStr();
-      document.getElementById('filterDate').value = todayStr();
-
-      // Header date
-      const now = new Date();
-      document.getElementById('headerDate').textContent = now.toLocaleDateString('en-MY', {
-        weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
+    // ── Init ──────────────────────────────────────────────────────
+    async function init() {
+      const now=new Date();
+      document.getElementById('headerDate').textContent=now.toLocaleDateString('en-MY',{
+        weekday:'short',day:'numeric',month:'short',year:'numeric'
       });
+      document.getElementById('inputDate').value=todayStr();
+      document.getElementById('filterDate').value=todayStr();
 
-      // Default time = now rounded to next 15 min
-      const mins = Math.ceil((now.getHours()*60+now.getMinutes())/15)*15;
-      const sh = Math.floor(mins/60)%24, sm = mins%60;
-      const eh = Math.floor((mins+30)/60)%24, em = (mins+30)%60;
-      document.getElementById('inputStart').value = `${pad(sh)}:${pad(sm)}`;
-      document.getElementById('inputEnd').value   = `${pad(eh)}:${pad(em)}`;
+      const mins=Math.ceil((now.getHours()*60+now.getMinutes())/15)*15;
+      const sh=Math.floor(mins/60)%24,sm=mins%60,eh=Math.floor((mins+30)/60)%24,em=(mins+30)%60;
+      document.getElementById('inputStart').value=`${pad(sh)}:${pad(sm)}`;
+      document.getElementById('inputEnd').value=`${pad(eh)}:${pad(em)}`;
 
-      updateCapacity();
-      renderToday();
+      // Load shared data
+      await loadBookings();
+      document.getElementById('loadingOverlay').classList.add('hidden');
+      document.getElementById('mainContent').classList.remove('hidden');
 
-      // Auto-refresh every 30s
-      setInterval(() => { updateCapacity(); renderToday(); }, 30000);
+      updateCapacity(); renderToday();
+      setSyncState('synced');
+
+      // Poll every 15 seconds for live updates from other users
+      setInterval(syncAndRefresh, 15000);
     }
 
     init();
